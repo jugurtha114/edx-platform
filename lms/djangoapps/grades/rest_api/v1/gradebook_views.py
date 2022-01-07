@@ -1090,7 +1090,7 @@ class SubsectionGradeView(GradeViewMixin, APIView):
                 # pylint: disable=no-member
                 history = list(PersistentSubsectionGradeOverride.history.filter(grade_id=original_grade.id).order_by(
                     'history_date'
-                )[:history_record_limit])
+                )[-history_record_limit:])
             grade_data = {
                 'earned_all': original_grade.earned_all,
                 'possible_all': original_grade.possible_all,
